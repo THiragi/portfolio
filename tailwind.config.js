@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       colors: {
         cyan: '#9cdbff',
+        beige: '#f3f3f3',
+        magenta: '#e4007f',
+        lamp: '#333333',
       },
       margin: {
         '96': '24rem',

@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
+body {
+  @apply text-lamp;
+}
 @tailwind utilities;

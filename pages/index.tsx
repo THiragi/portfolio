@@ -1,59 +1,49 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Layout from '../components/layout';
+import Hero from '../components/sections/hero';
+import About from '../components/sections/about';
+import Skills from '../components/sections/skills';
+import Projects from '../components/sections/projects';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Head from 'next/head';
-import { getSortedPostsData } from '../lib/posts';
+import { getContentsData } from '../lib/contents';
 import { GetStaticProps } from 'next';
 
 type Props = {
-  allPostsData: {
-    date: string,
-    title: string,
-    id: string
-  }[]
+  data: Data
 }
 
-const Section = styled.section`
-  ${tw `pt-48 w-full`}
-`;
+type Data = {
+  name: string,
+  contents: Content[]
+}
 
-const H3 = styled.h3`
-  ${tw `text-6xl`}
-`;
-const Home: React.FC<Props> = ({allPostsData}) => {
+type Content = {
+  id: string;
+  contentHtml: string;
+}
+
+const Home: React.FC<Props> = ({data}) => {
+  console.log(data);
   return (
     <Layout>
       <Head>
-        <title>T.hiragi</title>
+        <title>T.hiragi: portfolio</title>
       </Head>
-      <div>
-        <section>
-          <h2>Blog</h2>
-          <ul>
-            {allPostsData.map(({id, date, title}) => (
-              <li key={id}>
-                <a>
-                  {title}
-                </a>
-                <br />
-                {id}
-                <br />
-                {date}
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+      <Hero data={data['hero'][0]} />
+      <About data={data['about'][0]} />
+      <Skills data={data['skills']} />
+      <Projects data={data['projects']} />
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const data = await getContentsData();
   return {
     props: {
-      allPostsData
+      data
     }
   }
 }

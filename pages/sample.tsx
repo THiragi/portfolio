@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Head from 'next/head';
 import Link from 'next/link';
+import path from 'path';
+
+console.log(path.join(process.cwd(), 'posts'));
+console.log(process.cwd());
 
 type Props = {
   primary?: boolean
@@ -56,77 +60,6 @@ const H3 = styled.h3`
 `;
 
 
-const AboutDemo: React.FC = () => {
-  const el = useRef(null);
-
-  const handleScroll = () => {
-    el.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  };
-  useEffect(() => {
-    console.log(el.current.textContent);
-  },[]);
-  return (
-    <Section>
-      <button onClick={handleScroll}>About</button>
-      <div>
-        content/content/content/content/content/content/content/content/content/content/content/
-      </div>
-      <ul>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-      </ul>
-      <H3 ref={el}>AboutDemo</H3>
-      <ul>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-        <li>Content</li>
-      </ul>
-
-    </Section>
-  );
-}
 
 
 const Sample: React.FC = () => {
@@ -137,7 +70,6 @@ const Sample: React.FC = () => {
         <title>T.hiragi</title>
       </Head>
       <Wrapper>
-        <AboutDemo />
         <Counter />
         <CustomBtn str={"Normal"}/>
         <Box>

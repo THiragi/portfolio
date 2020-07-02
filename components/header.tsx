@@ -20,9 +20,8 @@ const MenuIcon: React.FC = () => {
   );
 }
 
-
 const Outer = styled.header<{isUp: boolean}>`
-  ${tw `py-4 fixed w-full bg-white transition-all duration-300 ease-out z-10`}
+  ${tw `bg-beige py-4 fixed w-full transition-all duration-300 ease-out z-10`}
   ${({isUp}) => isUp ? tw `transform translate-y-0`: tw `transform -translate-y-20`}
 `;
 
@@ -35,7 +34,7 @@ const Logo = styled.a`
 `;
 
 const LogoTone = styled.span`
-  ${tw `text-teal-500`}
+  ${tw `text-magenta`}
 `;
 
 const Navi = styled.nav`
@@ -47,6 +46,9 @@ const Ul = styled.ul`
   ${tw `flex justify-between`}
 `;
 
+const Li = styled.li`
+  ${tw `hover:text-magenta transition-all duration-300`}
+`;
 
 const Header: React.FC = () =>{
   const [isUp, setIsUp] = useState<boolean>(true);
@@ -80,27 +82,25 @@ const Header: React.FC = () =>{
         <h1>
           <Link href="/">
             <Logo>
-              T
               <LogoTone>
-                .hiragi
+              T  
               </LogoTone>
+              .h
             </Logo>
           </Link>
         </h1>
         <MenuIcon />
         <Navi>
           <Ul>
-            {
-              navLinks.map(({name,url}, i) => (
-                <li key={i}>
-                  <Link href={url}>
-                    <a>
-                      {name}
-                    </a>
-                  </Link>
-                </li>
-              ))
-            }
+            {navLinks.map(({name,url}, i) => (
+              <Li key={i}>
+                <Link href={url}>
+                  <a>
+                    {name}
+                  </a>
+                </Link>
+              </Li>
+            ))}
           </Ul>
         </Navi>
       </Wrapper>

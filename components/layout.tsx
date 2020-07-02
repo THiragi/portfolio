@@ -12,11 +12,11 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Container = styled.div`${tw `container `}`;
-
-const Main = styled.main`
-  ${tw `max-w-4xl py-0 px-4 mx-auto z-0`}
+const Container = styled.div`
+  ${tw `bg-beige`}
 `;
+
+
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
@@ -34,7 +34,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       </Head>
       <Header />
       <Container>
-        <Main>{children}</Main>
+        {children}
       </Container>
     </div>
   );

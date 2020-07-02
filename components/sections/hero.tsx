@@ -3,21 +3,55 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Section = styled.section`
-  ${tw `pt-48 w-full`}
+  ${tw `py-64 w-full`}
 `;
 
-const H3 = styled.h3`
-  ${tw `text-6xl`}
+const Main = styled.main`
+  ${tw `max-w-4xl py-0 mx-auto z-0`}
 `;
 
-const Hero: React.FC = () =>{
+const Block = styled.div`
+  ${tw `text-3xl text-right leading-none tracking-widest`}
+`;
 
+const Title = styled.div`
+  ${tw `text-beige bg-magenta pl-2 font-bold inline-flex`}
+
+`;
+
+const Name = styled.div`
+  ${tw `text-magenta px-2 font-bold inline-flex`}
+`;
+
+const Discription = styled.div`
+  ${tw `text-right leading-loose`}
+`;
+
+type Props = {
+  data: HeroData
+};
+
+type HeroData = {
+  id: string,
+  name: string,
+  title: string,
+  contentHtml: string,
+};
+
+const Hero: React.FC<Props> = ({data}) => {
   return (
     <Section>
-      <H3>About</H3>
-      <div>
-        contentscontentscontentscontentscontentscontents
-      </div>
+      <Main>
+        <Block>
+          <Name id={data.id}>
+            {data.name}
+          </Name>
+          <Title>
+            {data.title}
+          </Title>
+        </Block>
+        <Discription dangerouslySetInnerHTML={{ __html: data.contentHtml }}/>      
+      </Main>
     </Section>
   );
 };

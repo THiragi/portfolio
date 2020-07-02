@@ -4,59 +4,36 @@ import matter from 'gray-matter';
 import remark from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'contents/hero');
+const contentsDirectory = path.join(process.cwd(), 'contents');
 
-export function getSortedPostsData() {
+export async function getContentsData() {
+  const allDirents = fs.readdirSync(contentsDirectory, {withFileTypes: true});
+  const dirNames = allDirents.filter(dirents => dirents.isDirectory()).map(({name}) => name);
+  const allContentsData = Object.create(null);
 
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map(fileName => {
+  for (const name of dirNames) {
+    const filesDirectory = path.join(process.cwd(), `contents/${name}`);
+    const fileNames = fs.readdirSync(filesDirectory);
+    const allFilesData = await Promise.all(fileNames.map(async (fileName) => {
+      // ファイル名から拡張子を取り除き、idとして割りあてる
+      const id = fileName.replace(/\.md$/, '');
+      // ファイルパス
+      const fullPath = path.join(filesDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const matterResult = matter(fileContents);
+      const processedContent = await remark()
+      .use(html)
+      .process(matterResult.content);
+      const contentHtml = processedContent.toString();
   
-    const id = fileName.replace(/\.md$/, '');
-
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-
-    const matterResult = matter(fileContents);
-
-    return {
-      id,
-      ...(matterResult.data as { date: string; title: string})
-    };
-
-  });
-  return allPostsData.sort((a, b) => (a.date < b.date) ? 1 : -1);
-}
-
-
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory)
-  return fileNames.map(fileName => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, '')
-      }
-    }
-  })
-}
-
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents)
-
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-  const contentHtml = processedContent.toString()
-
-  // Combine the data with the id and contentHtml
-  return {
-    id,
-    contentHtml,
-    ...(matterResult.data as { date: string; title: string })
+      return {
+        id,
+        contentHtml,
+        ...(matterResult.data)
+      };
+    }));
+    allContentsData[name] = allFilesData;
   }
+  
+  return allContentsData;
 }

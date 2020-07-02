@@ -20,16 +20,20 @@ module.exports =  {
       url: '/#about',
     },
     {
-      name: 'experience',
-      url: '/#jobs',
+      name: 'skills',
+      url: '/#skills',
     },
     {
-      name: 'work',
+      name: 'projects',
       url: '/#projects',
     },
     {
       name: 'contact',
       url: '/#contact',
+    },    
+    {
+      name: 'blog',
+      url: '/blog',
     },
   ],
 
