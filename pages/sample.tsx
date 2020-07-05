@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '../components/layout';
+import Menu from '../components/menu';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Head from 'next/head';
@@ -69,6 +70,7 @@ const Sample: React.FC = () => {
       <Head>
         <title>T.hiragi</title>
       </Head>
+      <Menu />
       <Wrapper>
         <Counter />
         <CustomBtn str={"Normal"}/>

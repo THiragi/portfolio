@@ -3,7 +3,7 @@ module.exports =  {
   siteDescription: 'T.hiragi is a web engineer based in Japan.',
   siteUrl: 'https://thiragi.com',
   siteLanguage: 'JA',
-  name: 'T.Hiragi',
+  name: 'Takashi Hiragi',
   location: "San'in, Japan",
   email: 'w1th1nmybr41n@gmail.com',
   github: 'https://github.com/THiragi',
@@ -11,6 +11,10 @@ module.exports =  {
     {
       name: 'GitHub',
       url: 'https://github.com/THiragi',
+    },
+    {
+      name: 'note',
+      url: 'https://note.com/monomemo',
     },
   ],
 
@@ -31,10 +35,7 @@ module.exports =  {
       name: 'contact',
       url: '/#contact',
     },    
-    {
-      name: 'blog',
-      url: '/blog',
-    },
+
   ],
 
   navHeight: 100,

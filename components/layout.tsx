@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Header from './header';
+import Footer from './footer';
 
 if (typeof window !== "undefined") {
   // eslint-disable-next-line global-require
@@ -15,8 +16,6 @@ type Props = {
 const Container = styled.div`
   ${tw `bg-beige`}
 `;
-
-
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
@@ -36,6 +35,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Container>
         {children}
       </Container>
+      <Footer />
     </div>
   );
 };

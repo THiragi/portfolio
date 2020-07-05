@@ -7,23 +7,23 @@ const Section = styled.section`
 `;
 
 const Main = styled.main`
-  ${tw `max-w-4xl py-0 mx-auto z-0`}
+  ${tw `max-w-4xl p-4 mx-auto z-0`}
 `;
 
 const H3 = styled.h3`
-  ${tw `pb-4 text-6xl text-magenta`}
+  ${tw `pb-8 text-6xl text-magenta text-center`}
 `;
 
 const Inner = styled.div`
-  ${tw `flex justify-between`}
+  ${tw `md:flex md:justify-between`}
 `;
 
 const ProfImage = styled.img`
-  ${tw `rounded-full max-w-xs`}
+  ${tw `mx-auto rounded-full max-w-xs`}
 `;
 
 const ProfText = styled.div`
-  ${tw `max-w-md`}
+  ${tw `w-full md:max-w-md md:mr-12`}
 `;
 
 type Props = {

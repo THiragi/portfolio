@@ -11,11 +11,11 @@ const Main = styled.main`
 `;
 
 const Block = styled.div`
-  ${tw `text-3xl text-right leading-none tracking-widest`}
+  ${tw `text-3xl text-center leading-none tracking-widest`}
 `;
 
 const Title = styled.div`
-  ${tw `text-beige bg-magenta pl-2 font-bold inline-flex`}
+  ${tw `text-beige bg-magenta pl-2 font-bold inline-flex my-8`}
 
 `;
 
@@ -24,7 +24,7 @@ const Name = styled.div`
 `;
 
 const Discription = styled.div`
-  ${tw `text-right leading-loose`}
+  ${tw `text-center leading-loose`}
 `;
 
 type Props = {

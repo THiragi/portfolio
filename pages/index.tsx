@@ -4,8 +4,7 @@ import Hero from '../components/sections/hero';
 import About from '../components/sections/about';
 import Skills from '../components/sections/skills';
 import Projects from '../components/sections/projects';
-import styled from 'styled-components';
-import tw from 'twin.macro';
+import Contact from '../components/sections/contact';
 import Head from 'next/head';
 import { getContentsData } from '../lib/contents';
 import { GetStaticProps } from 'next';
@@ -25,7 +24,6 @@ type Content = {
 }
 
 const Home: React.FC<Props> = ({data}) => {
-  console.log(data);
   return (
     <Layout>
       <Head>
@@ -35,6 +33,7 @@ const Home: React.FC<Props> = ({data}) => {
       <About data={data['about'][0]} />
       <Skills data={data['skills']} />
       <Projects data={data['projects']} />
+      <Contact data={data['contact'][0]} />
     </Layout>
   )
 }

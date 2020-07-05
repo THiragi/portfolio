@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Menu from './menu';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import {navLinks, navHeight} from '../config';
+import {navLinks} from '../config';
 
 const MenuBtn = styled.div`
-  ${tw `md:hidden`}
+  ${tw `flex md:hidden`}
 `;
 
-const MenuIcon: React.FC = () => {
-  return (
-    <MenuBtn>
-      <button>
-        <svg className={`h-6 w-6 fill-current`} viewBox={`0 0 24 24`}>
-          <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
-        </svg>
-      </button>
-    </MenuBtn>
-  );
-}
-
 const Outer = styled.header<{isUp: boolean}>`
-  ${tw `bg-beige py-4 fixed w-full transition-all duration-300 ease-out z-10`}
+  ${tw `bg-beige fixed w-full transition-all duration-300 ease-out z-10 shadow-xs`}
   ${({isUp}) => isUp ? tw `transform translate-y-0`: tw `transform -translate-y-20`}
 `;
 
 const Wrapper = styled.div`
-  ${tw `flex justify-between max-w-4xl mx-auto`}
+  ${tw `p-4 flex justify-between max-w-4xl mx-auto items-center`}
 `;
 
 const Logo = styled.a`
@@ -38,8 +27,7 @@ const LogoTone = styled.span`
 `;
 
 const Navi = styled.nav`
-  ${tw `hidden md:block`}
-  width: 320px;
+  ${tw `hidden md:flex items-center`}
 `;
 
 const Ul = styled.ul`
@@ -47,20 +35,33 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  ${tw `hover:text-magenta transition-all duration-300`}
+  ${tw `ml-10 text-xl hover:text-magenta transition-all duration-300`}
 `;
 
 const Header: React.FC = () =>{
   const [isUp, setIsUp] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrollTop, setScrollTop] = useState<number>(0);
+  
+  const toggleMenu = (): void => setIsOpen(!isOpen);
 
-  const onScroll = (): void => {
+  const handleScroll = (): void => {
+    if (isOpen) {
+      return;
+    }
     const position = Math.max(window.pageYOffset, document.documentElement.scrollTop);
     let upState: boolean = (position < scrollTop) ? true : false;
     setIsUp(upState);
     setScrollTop(position);
-   };
+  };
+
+  const handleResize = (): void => {
+    if (window.innerWidth > 767 && isOpen) {
+      toggleMenu();
+    }
+  };
   
+
   /**
    * クリーンアップ
    * 
@@ -70,41 +71,50 @@ const Header: React.FC = () =>{
   useEffect(
     () => {
       // HeaderがDOMとして書き出された時にスクロールイベントに追加される。
-      document.addEventListener("scroll", onScroll);
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleResize);
       // Headerが書き換えられる時、スクロールイベントをリセットする。
-      return (): void => document.removeEventListener("scroll", onScroll);
+      return (): void => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleResize);
+      }
     },
   );
   
   return (
-    <Outer isUp={isUp}>
-      <Wrapper>
-        <h1>
-          <Link href="/">
-            <Logo>
-              <LogoTone>
-              T  
-              </LogoTone>
-              .h
-            </Logo>
-          </Link>
-        </h1>
-        <MenuIcon />
-        <Navi>
-          <Ul>
-            {navLinks.map(({name,url}, i) => (
-              <Li key={i}>
-                <Link href={url}>
-                  <a>
-                    {name}
-                  </a>
-                </Link>
-              </Li>
-            ))}
-          </Ul>
-        </Navi>
-      </Wrapper>
-    </Outer>
+    <div>
+      <Outer isUp={isUp}>
+        <Wrapper>
+          <h1>
+            <Link href="/">
+              <Logo>
+                <LogoTone>
+                T  
+                </LogoTone>
+                .h
+              </Logo>
+            </Link>
+          </h1>
+          <MenuBtn onClick={toggleMenu} >
+            <button>
+              <svg className={`h-6 w-6 fill-current`} viewBox={`0 0 24 24`}>
+                <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
+              </svg>
+            </button>
+          </MenuBtn>
+          <Navi>
+            <Ul>
+              {navLinks.map(({name,url}, i) => (
+                <Li key={i}>
+                  <a href={url}>{name}</a>
+                </Li>
+              ))}
+            </Ul>
+          </Navi>
+        </Wrapper>
+      </Outer>
+      <Menu isOpen={isOpen} toggleMenu={toggleMenu}/>
+    </div>
   );
 }
 

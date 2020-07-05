@@ -8,12 +8,11 @@ img: '/projects/reserve.png'
 tech:
   - Ruby On Rails
   - Postgresql
-  - jQuery
+  - Bootstrap
+  - Chart.js
   - Heroku
 ---
 
-自分で本格的に作成した初めてのアプリケーションです。最初に学んだ言語Rubyをメインに使っています。
-
-
-予約したい宿泊部屋を選択するとカレンダーから空室状況が確認できます。
-管理画面からは客室の追加や宿泊料金の設定、予約の確認・キャンセルなどができます。
+初めて作成したアプリで、小規模宿泊施設での利用を想定した予約システムです。当時師事していたメンターにクライアント役をやっていただき、色々な条件や要望を設定していただきながら設計・作成しました。  
+<a href="https://glacial-anchorage-50097.herokuapp.com/admins/sign_in" target="_blank">管理画面</a>からは売上の確認や客室・料金の設定ができます。  
+(Email: admin@gmail\.com,  Password: administer)

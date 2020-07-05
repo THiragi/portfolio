@@ -16,6 +16,9 @@ module.exports = {
         '96': '24rem',
         '128': '32rem',
       },
+      width: {
+        '3/10': '30%',
+      },
     }
   },
   variants: {
