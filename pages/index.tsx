@@ -1,4 +1,3 @@
-import React, { useEffect, useState, useRef } from 'react';
 import Layout from '../components/layout';
 import Hero from '../components/sections/hero';
 import About from '../components/sections/about';
