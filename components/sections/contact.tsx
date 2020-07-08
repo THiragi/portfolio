@@ -1,4 +1,4 @@
-import React,{ useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
@@ -20,10 +20,6 @@ const Inner = styled.div`
 
 const Address = styled.div`
   ${tw `font-bold py-2`}
-`;
-
-const ProfText = styled.div`
-  ${tw ``}
 `;
 
 type Props = {

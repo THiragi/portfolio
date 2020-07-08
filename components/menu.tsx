@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import {navLinks} from '../config';
 import styled from 'styled-components';
 import tw from 'twin.macro';
