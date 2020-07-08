@@ -31,7 +31,7 @@ const Navi = styled.nav`
 `;
 
 const Ul = styled.ul`
-  ${tw `flex justify-between`}
+  ${tw `flex justify-between list-none`}
 `;
 
 const Li = styled.li`
