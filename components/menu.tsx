@@ -65,8 +65,8 @@ const Menu: React.FC<Props> = ({isOpen, toggleMenu}) => {
                   <rect fill="none" width="48" height="48"/>
                 </g>
                 <g id="icon_data">
-                  <line fill="none" stroke="#2d3748" stroke-width="4px" x1="12.13" y1="12.63" x2="36.13" y2="36.13"/>
-                  <line fill="none" stroke="#2d3748" stroke-width="4px" x1="12.38" y1="36.38" x2="35.88" y2="12.38"/>
+                  <line fill="none" stroke="#2d3748" strokeWidth="4px" x1="12.13" y1="12.63" x2="36.13" y2="36.13"/>
+                  <line fill="none" stroke="#2d3748" strokeWidth="4px" x1="12.38" y1="36.38" x2="35.88" y2="12.38"/>
                 </g>
               </svg>
             </CloseBtn>

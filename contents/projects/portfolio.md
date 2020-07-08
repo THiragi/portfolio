@@ -9,8 +9,7 @@ tech:
   - Next.js
   - TypeScript
   - Styled-Components
-  - TailwindCSS
-  - microCMS
+  - Tailwind CSS
   - Netlify
 ---
 
