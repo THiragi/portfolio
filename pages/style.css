@@ -2,7 +2,7 @@
 @tailwind components;
 body {
   @apply text-lamp;
-  @apply m-0;
+  margin: 0px;
 }
 p > a {
   @apply text-orange-500;
