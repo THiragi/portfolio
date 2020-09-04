@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Main from '../../styles/main';
 
 const Section = styled.section`
   ${tw `py-64 w-full`}
-`;
-
-const Main = styled.main`
-  ${tw `max-w-4xl py-0 mx-auto z-0`}
 `;
 
 const Block = styled.div`

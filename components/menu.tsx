@@ -47,7 +47,7 @@ type Props = {
 }
 
 
-const Menu: React.FC<Props> = ({isOpen, toggleMenu}) => {
+const Menu: React.FC<Props> = ({isOpen, toggleMenu}):JSX.Element => {
 
   const handleClick = () => {
     toggleMenu();

@@ -38,7 +38,7 @@ const Li = styled.li`
   ${tw `ml-10 text-xl hover:text-magenta transition-all duration-300`}
 `;
 
-const Header: React.FC = () =>{
+const Header: React.FC = ():JSX.Element =>{
   const [isUp, setIsUp] = useState<boolean>(true);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrollTop, setScrollTop] = useState<number>(0);
@@ -50,7 +50,7 @@ const Header: React.FC = () =>{
       return;
     }
     const position = Math.max(window.pageYOffset, document.documentElement.scrollTop);
-    let upState: boolean = (position < scrollTop) ? true : false;
+    const upState: boolean = (position < scrollTop) ? true : false;
     setIsUp(upState);
     setScrollTop(position);
   };
@@ -71,8 +71,8 @@ const Header: React.FC = () =>{
   useEffect(
     () => {
       // HeaderがDOMとして書き出された時にスクロールイベントに追加される。
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", handleResize);
+      window.addEventListener("scroll", handleScroll, {passive: true});
+      window.addEventListener("resize", handleResize, {passive: true});
       // Headerが書き換えられる時、スクロールイベントをリセットする。
       return (): void => {
         window.removeEventListener("scroll", handleScroll);

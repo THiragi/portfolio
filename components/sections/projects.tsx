@@ -1,17 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Section from '../../styles/section';
+import Caption from '../../styles/caption';
+import Main from '../../styles/main';
 
-const Section = styled.section`
-  ${tw `py-20 w-full`}
-`;
-
-const Main = styled.main`
-  ${tw `max-w-4xl p-4 mx-auto z-0`}
-`;
-
-const H3 = styled.h3`
-  ${tw `pb-8 text-6xl text-magenta text-center`}
+const H3 = styled(Caption)`
+  ${tw `text-magenta`}
 `;
 
 const Inner = styled.div`

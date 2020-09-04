@@ -1,21 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Caption from '../../styles/caption';
+import Main from '../../styles/main';
 
 const Section = styled.section`
-  ${tw `bg-lamp py-20 w-full`}
-`;
-  
-const Main = styled.main`
-  ${tw `max-w-4xl py-0 mx-auto z-0 text-beige text-center`}
+  ${tw `py-20 w-full bg-lamp`}
 `;
 
-const H3 = styled.h3`
-  ${tw `pb-4 text-6xl`}
+const StyledMain = styled(Main)`
+  ${tw `text-beige`}
 `;
 
 const Inner = styled.div`
-  ${tw `flex`}
+  ${tw `text-center`}
 `;
 
 const Address = styled.div`
@@ -36,12 +34,12 @@ type ContactData = {
 const Contact: React.FC<Props> = ({data}) =>{
   return (
     <Section id="contact">
-      <Main>
-        <H3 >contact</H3>
+      <StyledMain>
+        <Caption >contact</Caption>
         <Inner>
+          <Address >{data.email}</Address>
         </Inner>
-        <Address >{data.email}</Address>
-      </Main>
+      </StyledMain>
     </Section>
   );
 
