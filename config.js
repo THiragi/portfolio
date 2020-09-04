@@ -34,8 +34,11 @@ module.exports =  {
     {
       name: 'contact',
       url: '/#contact',
-    },    
-
+    },
+    {
+      name: 'note',
+      url: 'https://note.com/monomemo',
+    },
   ],
 
   navHeight: 100,
