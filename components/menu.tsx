@@ -48,10 +48,8 @@ type Props = {
 
 
 const Menu: React.FC<Props> = ({isOpen, toggleMenu}):JSX.Element => {
-
-  const handleClick = () => {
-    toggleMenu();
-  }
+  const handleClick = () => toggleMenu();
+  
   return (
     <div>
       <Outer isOpen={isOpen} onClick={handleClick}/>

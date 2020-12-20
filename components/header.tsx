@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useNavi from '../hooks/use-navi';
 import Link from 'next/link';
 import Menu from './menu';
 import styled from 'styled-components';
@@ -39,47 +40,7 @@ const Li = styled.li`
 `;
 
 const Header: React.FC = ():JSX.Element =>{
-  const [isUp, setIsUp] = useState<boolean>(true);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [scrollTop, setScrollTop] = useState<number>(0);
-  
-  const toggleMenu = (): void => setIsOpen(!isOpen);
-
-  const handleScroll = (): void => {
-    if (isOpen) {
-      return;
-    }
-    const position = Math.max(window.pageYOffset, document.documentElement.scrollTop);
-    const upState: boolean = (position < scrollTop) ? true : false;
-    setIsUp(upState);
-    setScrollTop(position);
-  };
-
-  const handleResize = (): void => {
-    if (window.innerWidth > 767 && isOpen) {
-      toggleMenu();
-    }
-  };
-  
-
-  /**
-   * クリーンアップ
-   * 
-   * classコンポーネントのライフサイクルメソッド
-   * componentDidMount()とcomponentWillUnmount()にあたる処理
-   */
-  useEffect(
-    () => {
-      // HeaderがDOMとして書き出された時にスクロールイベントに追加される。
-      window.addEventListener("scroll", handleScroll, {passive: true});
-      window.addEventListener("resize", handleResize, {passive: true});
-      // Headerが書き換えられる時、スクロールイベントをリセットする。
-      return (): void => {
-        window.removeEventListener("scroll", handleScroll);
-        window.removeEventListener("resize", handleResize);
-      }
-    },
-  );
+  const [isUp, isOpen, toggleMenu] = useNavi();
   
   return (
     <div>
