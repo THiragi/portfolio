@@ -51,7 +51,7 @@ const Menu: React.FC<Props> = ({isOpen, toggleMenu}):JSX.Element => {
   const handleClick = () => toggleMenu();
   
   return (
-    <div>
+    <>
       <Outer isOpen={isOpen} onClick={handleClick}/>
       <Sidebar  isOpen={isOpen}>
         <Nav>
@@ -75,7 +75,7 @@ const Menu: React.FC<Props> = ({isOpen, toggleMenu}):JSX.Element => {
           </List> 
         </Nav>
       </Sidebar>
-    </div>
+    </>
   );
 }
 

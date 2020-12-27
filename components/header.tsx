@@ -43,7 +43,7 @@ const Header: React.FC = ():JSX.Element =>{
   const [isUp, isOpen, toggleMenu] = useNavi();
   
   return (
-    <div>
+    <>
       <Outer isUp={isUp}>
         <Wrapper>
           <h1>
@@ -75,7 +75,7 @@ const Header: React.FC = ():JSX.Element =>{
         </Wrapper>
       </Outer>
       <Menu isOpen={isOpen} toggleMenu={toggleMenu}/>
-    </div>
+    </>
   );
 }
 

@@ -19,7 +19,7 @@ const Container = styled.div`
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta 
@@ -36,7 +36,7 @@ const Layout: React.FC<Props> = ({ children }) => {
         {children}
       </Container>
       <Footer />
-    </div>
+    </>
   );
 };
 
