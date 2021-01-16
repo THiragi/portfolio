@@ -1,7 +1,7 @@
 ---
 index: 2
 title: 'Portfolio'
-url: 'http://localhost:3000'
+url: 'https://laughing-pasteur-060eb0.netlify.app/'
 date: '2020-06-30'
 github: 'https://github.com/THiragi/portfolio'
 img: '/projects/port.png'
